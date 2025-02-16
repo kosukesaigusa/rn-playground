@@ -15,6 +15,13 @@
   "jest": {
     "preset": "jest-expo"
   },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "listUnknownPackages": false
+      }
+    }
+  },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/bottom-tabs": "^7.2.0",
