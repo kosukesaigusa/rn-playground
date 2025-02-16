@@ -1,0 +1,13 @@
+{
+  "name": "rn-playground",
+  "version": "1.0.0",
+  "scripts": {
+    "check": "biome check --write",
+    "check:unsafe": "biome check --write --unsafe"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
+  },
+  "private": true
+}

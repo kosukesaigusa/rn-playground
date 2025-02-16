@@ -1,5 +1,5 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
-import { View, StyleSheet, Pressable } from 'react-native'
+import { Pressable, StyleSheet, View } from 'react-native'
 
 type Props = {
   onPress: () => void

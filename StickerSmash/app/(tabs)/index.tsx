@@ -1,29 +1,29 @@
+import Button from '@/components/Button'
+import CircleButton from '@/components/CircleButton'
+import EmojiList from '@/components/EmojiList'
+import EmojiPicker from '@/components/EmojiPicker'
+import EmojiSticker from '@/components/EmojiSticker'
+import IconButton from '@/components/IconButtons'
 import ImageViewer from '@/components/ImageViewer'
-import { StyleSheet, View, Text } from 'react-native'
-import Button from '../../components/Button'
+import type { ImageSource } from 'expo-image'
 import { launchImageLibraryAsync } from 'expo-image-picker'
 import { useState } from 'react'
-import IconButton from '@/components/IconButtons'
-import CircleButton from '@/components/CircleButton'
-import EmojiPicker from '@/components/EmojiPicker'
-import { type ImageSource } from 'expo-image'
-import EmojiList from '@/components/EmojiList'
-import EmojiSticker from '@/components/EmojiSticker'
+import { StyleSheet, View } from 'react-native'
 
 const PlaceholderImage = require('@/assets/images/background-image.png')
 
 export default function Index() {
   const [selectedImage, setSelectedImage] = useState<string | undefined>(
-    undefined
+    undefined,
   )
   const [showAppOptions, setShowAppOptions] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [pickedEmoji, setPickedEmoji] = useState<ImageSource | undefined>(
-    undefined
+    undefined,
   )
 
   const pickImageAsync = async () => {
-    let result = await launchImageLibraryAsync({
+    const result = await launchImageLibraryAsync({
       mediaTypes: ['images'],
       allowsEditing: true,
       quality: 1,
