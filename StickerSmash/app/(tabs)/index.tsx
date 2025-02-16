@@ -7,9 +7,12 @@ import IconButton from '@/components/IconButtons'
 import ImageViewer from '@/components/ImageViewer'
 import type { ImageSource } from 'expo-image'
 import { launchImageLibraryAsync } from 'expo-image-picker'
-import { useState } from 'react'
+import { saveToLibraryAsync, usePermissions } from 'expo-media-library'
+
+import { useRef, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { captureRef } from 'react-native-view-shot'
 
 const PlaceholderImage = require('@/assets/images/background-image.png')
 
@@ -22,6 +25,12 @@ export default function Index() {
   const [pickedEmoji, setPickedEmoji] = useState<ImageSource | undefined>(
     undefined,
   )
+  const [status, requestPermission] = usePermissions()
+  const imageRef = useRef<View>(null)
+
+  if (status === null) {
+    requestPermission()
+  }
 
   const pickImageAsync = async () => {
     const result = await launchImageLibraryAsync({
@@ -40,6 +49,7 @@ export default function Index() {
 
   const onReset = () => {
     setShowAppOptions(false)
+    setPickedEmoji(undefined)
   }
 
   const onAddSticker = () => {
@@ -50,20 +60,35 @@ export default function Index() {
     setIsModalVisible(false)
   }
 
-  const onSaveImageAsync = () => {
-    console.log('Save image')
+  const onSaveImageAsync = async () => {
+    try {
+      const localUri = await captureRef(imageRef, {
+        height: 440,
+        quality: 1,
+      })
+
+      await saveToLibraryAsync(localUri)
+
+      if (localUri) {
+        alert('Saved!')
+      }
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style={styles.imageContainer}>
-        <ImageViewer
-          imgSource={PlaceholderImage}
-          selectedImage={selectedImage}
-        />
-        {pickedEmoji && (
-          <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />
-        )}
+        <View ref={imageRef} collapsable={false}>
+          <ImageViewer
+            imgSource={PlaceholderImage}
+            selectedImage={selectedImage}
+          />
+          {pickedEmoji && (
+            <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />
+          )}
+        </View>
       </View>
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
