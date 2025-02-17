@@ -4,13 +4,18 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
+    "dev": "APP_VARIANT=development expo start",
+    "preview": "APP_VARIANT=preview expo start",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
     "check": "biome check --write",
-    "check:unsafe": "biome check --write --unsafe"
+    "check:unsafe": "biome check --write --unsafe",
+    "build:android-development": "eas build --platform android --profile development",
+    "build:ios-simulator": "eas build --platform ios --profile ios-simulator",
+    "build:ios-development": "eas build --platform ios --profile development"
   },
   "jest": {
     "preset": "jest-expo"
