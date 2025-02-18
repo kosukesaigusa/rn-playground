@@ -5,7 +5,6 @@
   "scripts": {
     "start": "expo start",
     "dev": "APP_VARIANT=development expo start",
-    "preview": "APP_VARIANT=preview expo start",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -15,7 +14,15 @@
     "check:unsafe": "biome check --write --unsafe",
     "build:android-development": "eas build --platform android --profile development",
     "build:ios-simulator": "eas build --platform ios --profile ios-simulator",
-    "build:ios-development": "eas build --platform ios --profile development"
+    "build:ios-development": "eas build --platform ios --profile development",
+    "build:android:preview": "eas build --platform android --profile preview",
+    "build:ios:preview": "eas build --platform ios --profile preview",
+    "build:android:production": "eas build --platform android",
+    "build:ios:production": "eas build --platform ios",
+    "build:submit:android:production": "eas build --platform android --auto-submit",
+    "build:submit:ios:production": "eas build --platform ios --auto-submit",
+    "submit:android:production": "eas submit --platform android",
+    "submit:ios:production": "eas submit --platform ios"
   },
   "jest": {
     "preset": "jest-expo"
