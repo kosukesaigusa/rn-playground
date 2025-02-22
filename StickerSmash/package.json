@@ -12,9 +12,10 @@
     "test": "jest --watchAll",
     "check": "biome check --write",
     "check:unsafe": "biome check --write --unsafe",
-    "build:android-development": "eas build --platform android --profile development",
+    "build:android:development": "eas build --platform android --profile development",
     "build:ios-simulator": "eas build --platform ios --profile ios-simulator",
-    "build:ios-development": "eas build --platform ios --profile development",
+    "build:ios:development": "eas build --platform ios --profile development",
+    "build:all:development": "eas build --platform all --profile development",
     "build:android:preview": "eas build --platform android --profile preview",
     "build:ios:preview": "eas build --platform ios --profile preview",
     "build:android:production": "eas build --platform android",
@@ -64,7 +65,8 @@
     "react-native-view-shot": "~4.0.3",
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.5",
-    "expo-dev-client": "~5.0.12"
+    "expo-dev-client": "~5.0.12",
+    "expo-updates": "~0.26.18"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

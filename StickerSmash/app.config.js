@@ -74,6 +74,12 @@ export default {
         projectId: '1a14e4d1-00d8-4161-8cd3-d99da4441571',
       },
     },
+    updates: {
+      url: 'https://u.expo.dev/1a14e4d1-00d8-4161-8cd3-d99da4441571',
+    },
+    runtimeVersion: {
+      policy: 'appVersion',
+    },
     owner: 'kosukesaigusa',
   },
 }
