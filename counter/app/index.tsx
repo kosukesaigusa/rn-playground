@@ -1,9 +1,7 @@
-import { useStore } from '@nanostores/react'
-import { Button, Text, View } from 'react-native'
-import { counter, decrement, increment, reset } from '../logic/counter'
+import { Link } from 'expo-router'
+import { Button, View } from 'react-native'
 
 export default function Index() {
-  const count = useStore(counter)
   return (
     <View
       style={{
@@ -12,11 +10,17 @@ export default function Index() {
         alignItems: 'center',
       }}
     >
-      <Text>Hello World</Text>
-      <Text>{counter.get()}</Text>
-      <Button title="Increment" onPress={increment} />
-      <Button title="Decrement" onPress={decrement} />
-      <Button title="Reset" onPress={reset} />
+      <View style={{ gap: 10 }}>
+        <Link href={{ pathname: '/use-state' }} asChild>
+          <Button title="use-state" />
+        </Link>
+        <Link href={{ pathname: '/use-context' }} asChild>
+          <Button title="use-context" />
+        </Link>
+        <Link href={{ pathname: '/nanostores' }} asChild>
+          <Button title="nanostores" />
+        </Link>
+      </View>
     </View>
   )
 }
